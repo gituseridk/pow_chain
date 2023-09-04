@@ -1,5 +1,8 @@
 use dotenv::dotenv;
-use pow_chain_core::env::{read_env, read_optional_env};
+use pow_chain_core::{
+    constants::DEFAULT_NODE_PORT,
+    env::{read_env, read_optional_env},
+};
 
 pub struct Config {
     pub secret: String,
@@ -12,7 +15,7 @@ impl Config {
 
         Self {
             secret: read_env("NODE_SECRET"),
-            port: read_optional_env("NODE_PORT").unwrap_or(8080),
+            port: read_optional_env("NODE_PORT").unwrap_or(DEFAULT_NODE_PORT),
         }
     }
 }
